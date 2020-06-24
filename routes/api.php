@@ -23,7 +23,16 @@ Route::group(['middleware'=>'api'], function (){
     Route::get('/getAllQuestion', 'QuestionController@getAllQuestion');
     Route::get('/getSingleQuestion/{question:slug}', 'QuestionController@getSingleQuestion');
     Route::post('/postQuestion', 'QuestionController@storeQuestion');
+    Route::patch('/updateQuestion/{question:slug}', 'QuestionController@updateQuestion');
     Route::delete('/deleteQuestion/{question:slug}', 'QuestionController@deleteSingleQuestion');
+});
+
+Route::group(['middleware'=>'api'], function (){
+    Route::get('/getAllCategory', 'CategoryController@getAllCategory');
+    Route::get('/getSingleCategory/{category:slug}', 'CategoryController@getSingleCategory');
+    Route::post('/postCategory', 'CategoryController@storeCategory');
+    Route::patch('/updatedCategory/{category:slug}', 'CategoryController@updateCategory');
+    Route::delete('/deletedCategory/{category:slug}', 'CategoryController@deleteCategory');
 });
 
 //Route::apiResource('/deleted', 'ReplyController');

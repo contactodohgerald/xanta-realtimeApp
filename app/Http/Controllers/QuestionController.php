@@ -42,6 +42,12 @@ class QuestionController extends Controller
         return response('CREATED', Response::HTTP_ACCEPTED);
     }
 
+    public function updateQuestion(Question $question, Request $request){
+        $question->update($request->all());
+
+        return response('Updated', Response::HTTP_ACCEPTED);
+    }
+
     public function deleteSingleQuestion(Question $question){
 
         try {
