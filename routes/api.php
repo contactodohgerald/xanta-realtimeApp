@@ -39,7 +39,13 @@ Route::group(['middleware'=>'api'], function (){
     Route::get('/getSingleQuestion/{question:slug}/getAllReply', 'ReplyController@getAllReply');
     Route::get('/getSingleQuestion/{question:slug}/getSingleReply/{reply:id}', 'ReplyController@getSingleReply');
     Route::post('/getSingleQuestion/{question:slug}/storeReply', 'ReplyController@storeReply');
+    Route::patch('/getSingleQuestion/{question:slug}/updateReply/{reply:id}', 'ReplyController@updateReply');
     Route::delete('/getSingleQuestion/{question:slug}/deleteReply/{reply:id}', 'ReplyController@deleteReply');
+});
+
+Route::group(['middleware'=>'api'], function (){
+    Route::post('/likeReply/{reply:id}', 'LikeController@likeIt');
+    Route::delete('/likeReply/{reply:id}', 'LikeController@unLikeIt');
 });
 
 

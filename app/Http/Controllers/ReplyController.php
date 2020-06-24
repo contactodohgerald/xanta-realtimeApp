@@ -27,6 +27,13 @@ class ReplyController extends Controller
          return response(['data' => $reply], Response::HTTP_CREATED);
     }
 
+    public function updateReply(Question $question, Request $request, Reply $reply){
+
+        $reply->update(['body' => $request->body]);
+
+        return response('Updated', Response::HTTP_ACCEPTED);
+    }
+
     public function deleteReply(Question $question, Reply $reply){
 
         try {
