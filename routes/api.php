@@ -35,4 +35,12 @@ Route::group(['middleware'=>'api'], function (){
     Route::delete('/deletedCategory/{category:slug}', 'CategoryController@deleteCategory');
 });
 
+Route::group(['middleware'=>'api'], function (){
+    Route::get('/getSingleQuestion/{question:slug}/getAllReply', 'ReplyController@getAllReply');
+    Route::get('/getSingleQuestion/{question:slug}/getSingleReply/{reply:id}', 'ReplyController@getSingleReply');
+    Route::post('/getSingleQuestion/{question:slug}/storeReply', 'ReplyController@storeReply');
+    Route::delete('/getSingleQuestion/{question:slug}/deleteReply/{reply:id}', 'ReplyController@deleteReply');
+});
+
+
 //Route::apiResource('/deleted', 'ReplyController');

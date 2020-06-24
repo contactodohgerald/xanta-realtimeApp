@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Model\Category;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,11 +21,11 @@ class CategoryController extends Controller
     }
 
     public function getAllCategory(){
-      return Category::latest()->get();
+      return CategoryResource::collection(Category::latest()->get());
     }
 
     public function getSingleCategory(Category $category){
-        return $category;
+        return new CategoryResource($category);
     }
 
     public function updateCategory(Category $category, Request $request){
