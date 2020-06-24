@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['middleware'=>'api'], function (){
+    Route::get('/getAllQuestion', 'QuestionController@getAllQuestion');
+    Route::get('/getSingleQuestion/{question:slug}', 'QuestionController@getSingleQuestion');
+    Route::post('/postQuestion', 'QuestionController@storeQuestion');
+    Route::delete('/deleteQuestion/{question:slug}', 'QuestionController@deleteSingleQuestion');
+});
+
+//Route::apiResource('/deleted', 'ReplyController');
