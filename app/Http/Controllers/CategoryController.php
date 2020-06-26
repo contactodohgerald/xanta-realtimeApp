@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['getAllCategory', 'getSingleCategory']]);
+    }
+
     public function storeCategory(Request $request){
         //Category::create($request->all());
         $category = new Category;

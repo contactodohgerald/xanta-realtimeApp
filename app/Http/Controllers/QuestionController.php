@@ -14,6 +14,11 @@ class QuestionController extends Controller
     private $errorCode = 0;
     private $status = true;
 
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['getAllQuestion', 'getSingleQuestion']]);
+    }
+
     public function getAllQuestion(){
 
         $data = QuestionResource::collection($request = Question::latest()->get());

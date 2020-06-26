@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ReplyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['getAllReply', 'getSingleReply']]);
+    }
+
     public function getAllReply(Question $question){
 
         return ReplyResource::collection($question->replies);
